@@ -63,7 +63,7 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make menuconfig
+        run: cd openwrt && make menuconfig
 
       - name: Download packages
         run: make download -j16
