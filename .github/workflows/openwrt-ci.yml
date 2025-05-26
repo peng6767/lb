@@ -5,15 +5,15 @@
 #
 # Copyright (C) 2020 KFERMercer
 #
-name: OpenWrt-CI
+name: OpenWrt-W
 
 on:
-  schedule:
-    - cron: 0 20 * * *
-
-permissions:
-  contents: read
-
+ schedule:
+  - cron: 0 20 * * *
+ push:
+  branches:
+   - master
+     
 jobs:
 
   build_openwrt:
@@ -63,7 +63,7 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: make menuconfig
 
       - name: Download packages
         run: make download -j16
